@@ -1,0 +1,2 @@
+Admin = admin_01@gmail.com 123
+Empleado = empleado_01@gmail.com 123
