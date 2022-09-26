@@ -1,0 +1,216 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = MolinaInmobilaria
+build_property.RootNamespace = MolinaInmobilaria
+build_property.ProjectDir = c:\Users\bebo_\OneDrive\Desktop\Bebo Programa\4to Cuatri\.NET\Pags\MolinaInmobilaria\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = c:\Users\bebo_\OneDrive\Desktop\Bebo Programa\4to Cuatri\.NET\Pags\MolinaInmobilaria
+build_property._RazorSourceGeneratorDebug = 
+
+[c:/Users/bebo_/OneDrive/Desktop/Bebo Programa/4to Cuatri/.NET/Pags/MolinaInmobilaria/Views/Contrato/Cancelar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udHJhdG9cQ2FuY2VsYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/bebo_/OneDrive/Desktop/Bebo Programa/4to Cuatri/.NET/Pags/MolinaInmobilaria/Views/Contrato/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udHJhdG9cQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/bebo_/OneDrive/Desktop/Bebo Programa/4to Cuatri/.NET/Pags/MolinaInmobilaria/Views/Contrato/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udHJhdG9cRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/bebo_/OneDrive/Desktop/Bebo Programa/4to Cuatri/.NET/Pags/MolinaInmobilaria/Views/Contrato/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udHJhdG9cRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/bebo_/OneDrive/Desktop/Bebo Programa/4to Cuatri/.NET/Pags/MolinaInmobilaria/Views/Contrato/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udHJhdG9cRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/bebo_/OneDrive/Desktop/Bebo Programa/4to Cuatri/.NET/Pags/MolinaInmobilaria/Views/Contrato/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udHJhdG9cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/bebo_/OneDrive/Desktop/Bebo Programa/4to Cuatri/.NET/Pags/MolinaInmobilaria/Views/Contrato/Paso1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udHJhdG9cUGFzbzEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/bebo_/OneDrive/Desktop/Bebo Programa/4to Cuatri/.NET/Pags/MolinaInmobilaria/Views/Contrato/Paso2.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udHJhdG9cUGFzbzIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/bebo_/OneDrive/Desktop/Bebo Programa/4to Cuatri/.NET/Pags/MolinaInmobilaria/Views/Contrato/PorFechas.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udHJhdG9cUG9yRmVjaGFzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/bebo_/OneDrive/Desktop/Bebo Programa/4to Cuatri/.NET/Pags/MolinaInmobilaria/Views/Contrato/Renovar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udHJhdG9cUmVub3Zhci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/bebo_/OneDrive/Desktop/Bebo Programa/4to Cuatri/.NET/Pags/MolinaInmobilaria/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/bebo_/OneDrive/Desktop/Bebo Programa/4to Cuatri/.NET/Pags/MolinaInmobilaria/Views/Home/Prohibido.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcm9oaWJpZG8uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/bebo_/OneDrive/Desktop/Bebo Programa/4to Cuatri/.NET/Pags/MolinaInmobilaria/Views/Inmueble/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5tdWVibGVcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/bebo_/OneDrive/Desktop/Bebo Programa/4to Cuatri/.NET/Pags/MolinaInmobilaria/Views/Inmueble/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5tdWVibGVcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/bebo_/OneDrive/Desktop/Bebo Programa/4to Cuatri/.NET/Pags/MolinaInmobilaria/Views/Inmueble/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5tdWVibGVcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/bebo_/OneDrive/Desktop/Bebo Programa/4to Cuatri/.NET/Pags/MolinaInmobilaria/Views/Inmueble/Disponibles.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5tdWVibGVcRGlzcG9uaWJsZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/bebo_/OneDrive/Desktop/Bebo Programa/4to Cuatri/.NET/Pags/MolinaInmobilaria/Views/Inmueble/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5tdWVibGVcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/bebo_/OneDrive/Desktop/Bebo Programa/4to Cuatri/.NET/Pags/MolinaInmobilaria/Views/Inmueble/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5tdWVibGVcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/bebo_/OneDrive/Desktop/Bebo Programa/4to Cuatri/.NET/Pags/MolinaInmobilaria/Views/Inmueble/PorFechas.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5tdWVibGVcUG9yRmVjaGFzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/bebo_/OneDrive/Desktop/Bebo Programa/4to Cuatri/.NET/Pags/MolinaInmobilaria/Views/Inmueble/PorPropietario.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5tdWVibGVcUG9yUHJvcGlldGFyaW8uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/bebo_/OneDrive/Desktop/Bebo Programa/4to Cuatri/.NET/Pags/MolinaInmobilaria/Views/Inquilino/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5xdWlsaW5vXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/bebo_/OneDrive/Desktop/Bebo Programa/4to Cuatri/.NET/Pags/MolinaInmobilaria/Views/Inquilino/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5xdWlsaW5vXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/bebo_/OneDrive/Desktop/Bebo Programa/4to Cuatri/.NET/Pags/MolinaInmobilaria/Views/Inquilino/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5xdWlsaW5vXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/bebo_/OneDrive/Desktop/Bebo Programa/4to Cuatri/.NET/Pags/MolinaInmobilaria/Views/Inquilino/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5xdWlsaW5vXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/bebo_/OneDrive/Desktop/Bebo Programa/4to Cuatri/.NET/Pags/MolinaInmobilaria/Views/Inquilino/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5xdWlsaW5vXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/bebo_/OneDrive/Desktop/Bebo Programa/4to Cuatri/.NET/Pags/MolinaInmobilaria/Views/Pago/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFnb1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/bebo_/OneDrive/Desktop/Bebo Programa/4to Cuatri/.NET/Pags/MolinaInmobilaria/Views/Pago/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFnb1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/bebo_/OneDrive/Desktop/Bebo Programa/4to Cuatri/.NET/Pags/MolinaInmobilaria/Views/Pago/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFnb1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/bebo_/OneDrive/Desktop/Bebo Programa/4to Cuatri/.NET/Pags/MolinaInmobilaria/Views/Pago/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFnb1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/bebo_/OneDrive/Desktop/Bebo Programa/4to Cuatri/.NET/Pags/MolinaInmobilaria/Views/Pago/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFnb1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/bebo_/OneDrive/Desktop/Bebo Programa/4to Cuatri/.NET/Pags/MolinaInmobilaria/Views/Propietario/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvcGlldGFyaW9cQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/bebo_/OneDrive/Desktop/Bebo Programa/4to Cuatri/.NET/Pags/MolinaInmobilaria/Views/Propietario/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvcGlldGFyaW9cRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/bebo_/OneDrive/Desktop/Bebo Programa/4to Cuatri/.NET/Pags/MolinaInmobilaria/Views/Propietario/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvcGlldGFyaW9cRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/bebo_/OneDrive/Desktop/Bebo Programa/4to Cuatri/.NET/Pags/MolinaInmobilaria/Views/Propietario/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvcGlldGFyaW9cRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/bebo_/OneDrive/Desktop/Bebo Programa/4to Cuatri/.NET/Pags/MolinaInmobilaria/Views/Propietario/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvcGlldGFyaW9cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/bebo_/OneDrive/Desktop/Bebo Programa/4to Cuatri/.NET/Pags/MolinaInmobilaria/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/bebo_/OneDrive/Desktop/Bebo Programa/4to Cuatri/.NET/Pags/MolinaInmobilaria/Views/Shared/_Inmuebles.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Jbm11ZWJsZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/bebo_/OneDrive/Desktop/Bebo Programa/4to Cuatri/.NET/Pags/MolinaInmobilaria/Views/Shared/_Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/bebo_/OneDrive/Desktop/Bebo Programa/4to Cuatri/.NET/Pags/MolinaInmobilaria/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/bebo_/OneDrive/Desktop/Bebo Programa/4to Cuatri/.NET/Pags/MolinaInmobilaria/Views/Usuario/Contraseña.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xDb250cmFzZcOxYS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/bebo_/OneDrive/Desktop/Bebo Programa/4to Cuatri/.NET/Pags/MolinaInmobilaria/Views/Usuario/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/bebo_/OneDrive/Desktop/Bebo Programa/4to Cuatri/.NET/Pags/MolinaInmobilaria/Views/Usuario/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/bebo_/OneDrive/Desktop/Bebo Programa/4to Cuatri/.NET/Pags/MolinaInmobilaria/Views/Usuario/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/bebo_/OneDrive/Desktop/Bebo Programa/4to Cuatri/.NET/Pags/MolinaInmobilaria/Views/Usuario/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/bebo_/OneDrive/Desktop/Bebo Programa/4to Cuatri/.NET/Pags/MolinaInmobilaria/Views/Usuario/Imagen.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xJbWFnZW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/bebo_/OneDrive/Desktop/Bebo Programa/4to Cuatri/.NET/Pags/MolinaInmobilaria/Views/Usuario/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/bebo_/OneDrive/Desktop/Bebo Programa/4to Cuatri/.NET/Pags/MolinaInmobilaria/Views/Usuario/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/bebo_/OneDrive/Desktop/Bebo Programa/4to Cuatri/.NET/Pags/MolinaInmobilaria/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/bebo_/OneDrive/Desktop/Bebo Programa/4to Cuatri/.NET/Pags/MolinaInmobilaria/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/bebo_/OneDrive/Desktop/Bebo Programa/4to Cuatri/.NET/Pags/MolinaInmobilaria/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-5912z68a34

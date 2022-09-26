@@ -1,0 +1,48 @@
+@model MolinaInmobilaria.Models.Contrato
+
+@{
+    ViewData["Title"] = "Borrar";
+}
+<h3>¿Estas seguro de querer eliminar este Contrato?</h3>
+<div>
+    <h4>Contrato</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            <span>Nombre del Inquilino</span>
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Inquilino.Nombre)
+        </dd>
+        <dt class = "col-sm-2">
+            <span>Direccion del Inmueble
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Inmueble.Direccion)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FechaInicio)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FechaInicio)
+        </dd>
+         <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Cantidad_Cuotas)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Cantidad_Cuotas)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FechaExpiracion)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FechaExpiracion)
+        </dd>
+ 
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="submit" value="Borrar" class="btn btn-danger" /> 
+        <a asp-action="Index" class="btn btn-primary">Volver a la Lista</a>
+    </form>
+</div>

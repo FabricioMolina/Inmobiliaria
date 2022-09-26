@@ -1,0 +1,59 @@
+@model MolinaInmobilaria.Models.Contrato
+
+@{
+    ViewData["Title"] = "Details";
+    DateTime hoy = DateTime.Now;
+}
+
+<h1>Detalles</h1>
+
+<div>
+    <h4>Contrato</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Nombre del Inquilino
+        </dt>
+        <dd class = "col-sm-10">
+            @(Model.Inquilino.Nombre +""+ Model.Inquilino.Apellido)
+        </dd>
+        <dt class = "col-sm-2">
+            Direccion del Inmueble
+        </dt>
+        <dd class = "col-sm-10">
+            @(Model.Inmueble.Direccion)
+        </dd>
+        <dt class = "col-sm-2">
+            Fecha de Inicio
+        </dt>
+        <dd class = "col-sm-10">
+            @{
+                    var inicio = Model.FechaInicio.ToString("MM/dd/yyyy");
+                }
+                @(inicio)
+        </dd>
+        <dt class = "col-sm-2">
+            Cantidad de Cuotas
+        </dt>
+        <dd class = "col-sm-10">
+            @(Model.Cantidad_Cuotas)
+        </dd>
+        <dt class = "col-sm-2">
+            Fecha de Expiracion
+        </dt>
+        <dd class = "col-sm-10">
+            @{
+                    var expiracion = Model.FechaExpiracion.ToString("MM/dd/yyyy");
+                }
+                @(expiracion)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new {  id = Model.Id  }, new{@class="btn btn-primary"}) 
+    @Html.ActionLink("Pagar", "Create", "Pago", new {  id=Model.Id  }, new{@class="btn btn-primary"}) 
+    <a asp-action="Index" class="btn btn-primary">Volver</a>
+    
+    
+    
+</div>

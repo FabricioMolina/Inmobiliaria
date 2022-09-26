@@ -1,0 +1,13 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">¡Bienvenido!</h1>
+    <p>Proyecto "Inmobiliaria" de Fabricio Molina.</p>
+</div>
+    @if (!User.Identity.IsAuthenticated)
+        {
+	await Html.RenderPartialAsync("_Login", new LoginView());
+	<a href="@Url.RouteUrl("login")">Ir al login</a>
+        }

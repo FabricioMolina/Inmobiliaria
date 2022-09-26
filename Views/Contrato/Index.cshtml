@@ -1,0 +1,81 @@
+@model IEnumerable<MolinaInmobilaria.Models.Contrato>
+
+@{
+    ViewData["Title"] = "Contratos";
+    List<string> informacion = new List<string>(){
+                "Asegúrate de que todos los datos sean correctos a la hora de pagar tu contrato, una vez pagado no puedes modificar el contrato.",
+                "Las fechas de Expiración de nuestros contratos, siempre serán el mes siguiente a la que Inquilino lo firma.",
+                "Una vez finalizado el Contrato, puedes renovarlo, aunque estos ajustes están sujetos a los aumentos de precio del inmueble."
+            };
+    ViewBag.Informacion = informacion;
+}
+
+<h1> @ViewBag.Msj </h1>
+
+<p>
+    <a asp-action="Paso1" class="btn btn-primary">Crear Contrato <i class="fa-solid fa-file-circle-plus"></i></a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Codigo del Contrato
+            </th>
+            <th>
+                Nombre del Inquilino
+            </th>
+            <th>
+                Domicilio del Inmueble
+            </th>
+            <th>
+                Fecha de Inicio del Contrato
+            </th>
+            <th>
+                Cantidad de Cuotas
+            </th>
+            <th>
+                Fecha de Culminacion del Contrato
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @("#" + item.Id)
+            </td>
+            <td>
+                @(item.Inquilino.Nombre + " " + item.Inquilino.Apellido)
+            </td>
+            <td>
+                 @Html.ActionLink(item.Inmueble.Direccion, "ObtenerPorInmueble", new { id=item.Inmueble.Id});
+            </td>
+            <td>
+                @{
+                    var inicio = item.FechaInicio.ToString("MM/dd/yyyy");
+                }
+                @(inicio)
+               
+            </td>
+            <td>
+                @(item.Cantidad_Cuotas)
+            </td>
+            <td>
+                @{
+                    var expiracion = item.FechaExpiracion.ToString("MM/dd/yyyy");
+                }
+                @(expiracion)
+            </td>
+            <td>
+                @Html.ActionLink("Detalles", "Details", new {  id=item.Id  }, new{@class="btn btn-primary"} ) 
+                @Html.ActionLink("Editar", "Edit", new { id=item.Id }, new{@class="btn btn-primary"}) 
+                @Html.ActionLink("Borrar", "Delete", new {  id=item.Id  }, new{@class="btn btn-primary"}) 
+                @Html.ActionLink("Pagar", "Create", "Pago", new {  id=item.Id}, new{@class="btn btn-primary"}) 
+                @Html.ActionLink("Cancelar", "Cancelar", new {  id=item.Id}, new{@class="btn btn-primary"})
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

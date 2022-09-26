@@ -1,0 +1,65 @@
+@model MolinaInmobilaria.Models.Contrato
+
+@{
+    ViewData["Title"] = "Cancelar";
+}
+<h1>¿Estas seguro de querer Cancelar este Contrato?</h1>
+<div>
+    <h4>Contrato</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            <span>Nombre del Inquilino</span>
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Inquilino.Nombre)
+        </dd>
+        <dt class = "col-sm-2">
+            <span>Direccion del Inmueble
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Inmueble.Direccion)
+        </dd>
+        <dt class = "col-sm-2">
+            Fecha de Inicio
+        </dt>
+        <dd class = "col-sm-10">
+            @{
+                    var inicio = Model.FechaInicio.ToString("MM/dd/yyyy");
+            }
+            @(inicio)
+        </dd>
+         <dt class = "col-sm-2">
+            Cantidad de Cuotas
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Cantidad_Cuotas)
+        </dd>
+        <dt class = "col-sm-2">
+           Fecha de Expiracion
+        </dt>
+        <dd class = "col-sm-10">
+             @{
+                    var final = Model.FechaExpiracion.ToString("MM/dd/yyyy");
+            }
+            @(final)
+        </dd>
+ 
+    </dl>
+    @if(Model.Cantidad_Cuotas == ViewBag.Cantidad){
+        ViewBag.Error = "Usted ya pago todo su contrato, no puede cancelarlo.";
+            <a asp-action="Index">Volver a la Lista</a>
+        
+    }else{
+       List<string> informacion = new List<string>(){
+                    "Se te cobrarán todas tus cuotas vencidas, cada una con un plus del 25%.",
+                    "Si usted cumplió con más de la mitad del tiempo de contrato establecido, se le cobraran dos meses adicionales, si no; solo uno",
+                 } ;
+        ViewBag.Informacion = informacion;
+        <form asp-action="Cancelar">
+            <input type="submit" value="Cancelar" class="btn btn-danger" /> 
+            <a asp-action="Index" class="btn btn-primary">Volver a la Lista</a>
+        </form>
+    }
+   
+</div>

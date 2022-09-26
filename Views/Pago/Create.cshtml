@@ -1,0 +1,84 @@
+@model MolinaInmobilaria.Models.Pago
+
+@{
+    ViewData["Title"] = "Crear";
+    string now = DateTime.Now.ToString("yyyy-MM-dd");
+    DateTime nowDate = DateTime.Now;
+    DateTime fecha = ViewBag.Contrato.FechaExpiracion;
+    
+}
+
+<h1>Confirmar Pago</h1>
+
+<h4>Datos del pago</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+            <div class="form-group">
+                <label asp-for="Id_Contrato" class="control-label">Codigo del Contrato</label>
+                <input asp-for="Id_Contrato" class="form-control" value="@ViewBag.Contrato.Id" readonly/>
+                <span asp-validation-for="Id_Contrato" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fecha" class="control-label">Fecha de Pago</label>
+                <input asp-for="Fecha" class="form-control" type="date" value="@now" min="@now" readonly/>
+                <span asp-validation-for="Fecha" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Monto" class="control-label"></label>
+                <input asp-for="Monto" class="form-control" value="@ViewBag.Contrato.Inmueble.Precio" readonly/>
+                <span asp-validation-for="Monto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cantidad_Cuotas" class="control-label">Cantidad de Cuotas</label>
+                <input asp-for="Cantidad_Cuotas" class="form-control" value="@ViewBag.Contrato.Cantidad_Cuotas" readonly/>
+                <span asp-validation-for="Cantidad_Cuotas" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Numero_Cuota" class="control-label">Numero de Cuota</label>
+                <input asp-for="Numero_Cuota" class="form-control" value="@ViewBag.Cantidad" readonly/>
+                <span asp-validation-for="Numero_Cuota" class="text-danger"></span>
+            </div>
+            @if(nowDate < fecha && ViewBag.Cantidad == ViewBag.Contrato.Cantidad_Cuotas){
+                <div class="form-group">
+                <label asp-for="Tipo_Pago" class="control-label">Tipo de Pago</label>
+                <input asp-for="Tipo_Pago" class="form-control" value="Contrato Finalizado" readonly/>
+                <span asp-validation-for="Tipo_Pago" class="text-danger"></span>
+                </div>
+            }else if(nowDate < fecha){
+                <div class="form-group">
+                <label asp-for="Tipo_Pago" class="control-label">Tipo de Pago</label>
+                <input asp-for="Tipo_Pago" class="form-control" value="Cuota" readonly/>
+                <span asp-validation-for="Tipo_Pago" class="text-danger"></span>
+                </div>            
+            }else{
+                <div class="form-group">
+                <label asp-for="Tipo_Pago" class="control-label">Tipo de Pago</label>
+                <input asp-for="Tipo_Pago" class="form-control" value="Vencida" readonly/>
+                <span asp-validation-for="Tipo_Pago" class="text-danger"></span>
+                </div>
+            }
+            
+            @if(ViewBag.Cantidad <= ViewBag.Contrato.Cantidad_Cuotas){
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            }else{
+                ViewBag.Error = "Usted ya pago todas sus cuotas.";
+            }
+            
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" class="btn btn-primary">Volver a la Lista</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

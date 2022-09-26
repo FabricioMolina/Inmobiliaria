@@ -1,0 +1,96 @@
+@model IEnumerable<MolinaInmobilaria.Models.Inmueble>
+@{
+                ViewData["Title"] = "Inmuebles";
+            }
+
+@foreach (var item in Model) {
+    <h1>
+    
+    @Html.DisplayFor(model => item.Propietario.Nombre)
+    @Html.DisplayFor(model => item.Propietario.Apellido)
+</h1>
+}
+<p>
+    <a asp-action="Create" class="btn btn-primary">Crear Nuevo Inmueble <i class="fa-solid fa-house-medical"></i></a> 
+</p>
+<table class="table">
+    
+    <thead>
+        
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Direccion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ambientes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Latitud)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Longitud)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tipo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Uso)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Precio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Propietario)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Direccion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ambientes)
+            </td>
+            <th>
+                @Html.DisplayFor(modelItem => item.Latitud)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.Longitud)
+            </th>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tipo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Uso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Precio)
+            </td>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.Estado)*@
+                @if(item.Estado == 0){
+                    <span>No Disponible</span>
+                }else{
+                    <span>Disponible</span>
+                }
+            </td>
+            <td>
+               @(item.Propietario.Nombre + " " + item.Propietario.Apellido)
+               
+            </td>
+            
+            <td>
+                @Html.ActionLink("Editar", "Edit", new {  id=item.Id  }, new{@class="btn btn-primary"}) 
+                @Html.ActionLink("Detaller", "Details", new {  id=item.Id  }, new{@class="btn btn-primary"})
+                @Html.ActionLink("Eliminar", "Delete", new {  id=item.Id  }, new{@class="btn btn-primary"})
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,85 @@
+@model MolinaInmobilaria.Models.Contrato
+
+@{
+    ViewData["Title"] = "Editar";
+    string fecha = Model.FechaInicio.ToString("yyyy-MM-dd");
+    
+}
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        @if(ViewBag.Cantidad != 0 && ViewBag.Cantidad+1 != Model.Cantidad_Cuotas && !ViewBag.Finalizado){
+            <div>
+                <a asp-action="Index">Volver a la Lista</a>
+            </div>
+        }else if(ViewBag.Finalizado == true){
+            
+            <div>
+                @Html.ActionLink("Contrato Finalizado, ¿Quires renovar?", "Renovar", new {  id=Model.Id  }, new{@class="btn btn-primary"} )
+            </div>
+        }else{
+            <h1>Editar</h1>
+            <h4>Contrato</h4>
+            <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Id" class="control-label">Codigo Contrato</label>
+                <input asp-for="Id" class="form-control" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Id_Inquilino" class="control-label"></label>
+                <select class="form-control" asp-for="Id_Inquilino">
+                    @foreach (var item in ViewBag.inquilino)
+                        {
+                        <option value="@item.Id"> @item.Nombre  @item.Apellido </option>
+                        }
+                </select>
+                <span asp-validation-for="Id_Inquilino" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Id_Inmueble" class="control-label"></label>
+                <select class="form-control" asp-for="Id_Inmueble">
+                    @foreach (var item in ViewBag.inmueble)
+                        {
+                        <option value="@item.Id" > @item.Direccion </option>
+                        }
+                </select>
+                <span asp-validation-for="Id_Inmueble" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaInicio" class="control-label"></label>
+                <input asp-for="FechaInicio" class="form-control" type="date" min="@fecha" value="@fecha"/>
+                <span asp-validation-for="FechaInicio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cantidad_Cuotas" class="control-label"></label>
+               
+               <select asp-for="Cantidad_Cuotas" class="form-select">
+                    @for(int x = 1 ; x <= 12 ; x++){
+
+                        <option value="@x">@x</option>
+                    }
+
+               </select>
+                <span asp-validation-for="Cantidad_Cuotas" class="text-danger"></span>
+            @if(ViewBag.Cantidad == 0){
+                <div class="form-group">
+                    <input type="submit" value="Crear" class="btn btn-primary" />
+                </div>
+            }
+            </form>
+            <div>
+                <a asp-action="Index" class="btn btn-primary">Volver a la Lista</a>
+            </div>
+        }
+        
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,25 @@
+@model MolinaInmobilaria.Models.Usuario
+<div class="col-md-4">
+    <h2>Contraseña</h2>
+    <form asp-action="Contraseña">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label name="claveVieja" class="control-label">Contraseña Vieja</label>
+            <input type="password" name="claveVieja" class="form-control" />
+            <span name="claveVieja" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label name="claveNueva" class="control-label">Nueva contraseña</label>
+            <input type="password" name="claveNueva" class="form-control" />
+            <span name="claveNueva" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label name="confirmarClave" class="control-label">Repita la nueva Contraseña</label>
+            <input type="password" name="confirmarClave" class="form-control" />
+            <span name="confirmarClave" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Cambiar Contraseña" class="btn btn-primary" />
+        </div>
+    </form>
+</div>

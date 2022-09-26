@@ -1,0 +1,55 @@
+@model MolinaInmobilaria.Models.Pago
+
+@{
+    ViewData["Title"] = "Borrar";
+}
+
+
+<h3>¿Estas seguro de querer eliminar este Pago?</h3>
+<div>
+    <h4>Pago</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+           Codigo del Pago
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            Codigo del Contrato
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Id_Contrato)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Monto)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Monto)
+        </dd>
+         <dt class = "col-sm-2">
+            Cantidad de Cuotas
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Cantidad_Cuotas)
+        </dd>
+         <dt class = "col-sm-2">
+           Tipo de Pago
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Tipo_Pago)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="submit" value="Borrar" class="btn btn-danger" /> 
+        <a asp-action="Index" class="btn btn-primary">Volver a la Lista</a>
+    </form>
+</div>

@@ -1,0 +1,60 @@
+@model List<Inquilino>
+
+@{
+    ViewData["Title"] = "Lista de Inquilinos";
+}
+<h1>Lista de Inquilinos</h1>
+<p>
+    <a asp-action="Create" class="btn btn-primary" >Crear nuevo Inquilino <i class="fa-solid fa-person-circle-plus"></i></a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+
+            <th>
+               Nombre
+            </th>
+            <th>
+               Apellido
+            </th>
+            <th>
+               Telefono
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Dni
+            </th>
+            <th>
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (Inquilino item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefono)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dni)
+            </td>
+            <td>
+                @Html.ActionLink("Detalles", "Details", new {  id=item.Id  }, new{@class="btn btn-primary"} )
+                @Html.ActionLink("Editar", "Edit", new { id=item.Id }, new{@class="btn btn-primary"}) 
+                @Html.ActionLink("Borrar", "Delete", new {  id=item.Id  }, new{@class="btn btn-primary"})
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

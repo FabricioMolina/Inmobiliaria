@@ -1,0 +1,50 @@
+@model MolinaInmobilaria.Models.Inmueble
+
+@{
+    ViewData["Title"] = "Crear";
+}
+
+<h1>Paso 1</h1>
+
+<h4>Seleccione el tipo de inmueble que usted requiere</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Paso1">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+           
+            <div class="form-group">
+                <label asp-for="Tipo" class="control-label">Tipo del Inmueble</label>
+                @Html.DropDownListFor(x => x.Tipo, new List<SelectListItem>
+                        {
+                        new SelectListItem() {Text = "Departamento", Value="Departamento"},
+                        new SelectListItem() {Text = "Casa", Value="Casa"},
+                        new SelectListItem() {Text = "Local", Value="Local"},
+                        new SelectListItem() {Text = "Terreno", Value="Terreno"}                       
+                    }, htmlAttributes:new {@class="form-control"}) 
+                <span asp-validation-for="Tipo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Uso" class="control-label">Uso del Inmueble</label>
+                @Html.DropDownListFor(x => x.Uso, new List<SelectListItem>
+                        {
+                        new SelectListItem() {Text = "Residencial", Value="Residencial"},
+                        new SelectListItem() {Text = "Comercial", Value="Comercial"},
+                        new SelectListItem() {Text = "Evento", Value="Eventto"},                        
+                    }, htmlAttributes:new {@class="form-control"})                
+                <span asp-validation-for="Uso" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Crear" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" class="btn btn-primary">Volver a la Lista</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

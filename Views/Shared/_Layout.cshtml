@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MolinaInmobilaria</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/MolinaInmobilaria.styles.css" asp-append-version="true" />
+    <script src="https://kit.fontawesome.com/4e8cac14a1.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+              
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MolinaInmobilaria</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false"> 
+                                    Propietarios
+                                </a>
+                            <ul class="dropdown-menu dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
+                                    <li><a class="dropdown-item" asp-controller="Propietario" asp-action="Index">Administrar Propietarios <i class="fa-solid fa-address-book"></i></a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false"> 
+                                    Inquilinos
+                                </a>
+                            <ul class="dropdown-menu dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
+                                    <li><a class="dropdown-item" asp-controller="Inquilino" asp-action="Index">Administrar Inquilinos <i class="fa-solid fa-address-book"></i></a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false"> 
+                                    Inmuebles
+                                </a>
+                            <ul class="dropdown-menu dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
+                                    <li><a class="dropdown-item" asp-controller="Inmueble" asp-action="Index">Administrar Inmuebles <i class="fa-solid fa-house"></i></a></li>
+                                    <li><a class="dropdown-item" asp-controller="Inmueble" asp-action="Disponibles">Administrar Inmuebles Disponibles <i class="fa-solid fa-house-circle-check"></i></a></li>                            
+                                    <li><a class="dropdown-item" asp-controller="Inmueble" asp-action="PorFechas">Administrar Inmuebles Disponibles Por Fechas<i class="fa-solid fa-calendar-days"></i></a></li>                            
+
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false"> 
+                                    Contratos
+                                </a>
+                            <ul class="dropdown-menu dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
+                                    <li><a class="dropdown-item" asp-controller="Contrato" asp-action="Index">Administrar Contratos<i class="fa-solid fa-file-contract"></i></a></li>
+                                    <li><a class="dropdown-item" asp-controller="Contrato" asp-action="ObtenerTodosVigentes">Administrar Contratos No Expirados <i class="fa-solid fa-file-circle-xmark"></i></a></li>
+                                    <li><a class="dropdown-item" asp-controller="Contrato" asp-action="ObtenerTodosNoVigentes">Administrar Contratos Expirados <i class="fa-solid fa-file-circle-check"></i></a></li>                              
+                            </ul>
+                        </li>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area=""  asp-controller="Pago" asp-action="Index">Administrar Pagos</a>
+                        </li>
+                         
+                        
+                        <li class="nav-item dropdown">
+                            @if (!User.Identity.IsAuthenticated){
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                     Iniciar Sesión
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
+                                    <li><a class="dropdown-item" asp-controller="Usuario" asp-action="Login"><i class="fa-solid fa-user"></i>Ingresar</a></li>
+                                </ul>
+                            }else if(User.IsInRole("Admin")){
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false"> 
+                                    @User.Identity.Name
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
+                                    <li><a class="dropdown-item" asp-controller="Usuario" asp-action="MiPerfil"> Mi Perfil <i class="fa-solid fa-user"></i></a></li>
+                                    <li><a class="dropdown-item" asp-controller="Usuario" asp-action="Index"> Administrar Usuarios <i class="fa-solid fa-address-book"></i></a></li>
+                                    <li><a class="dropdown-item" asp-controller="Usuario" asp-action="Create"> Añadir Cuenta <i class="fa-solid fa-plus"></i></a></li>
+                                    <li><a class="dropdown-item" asp-controller="Usuario" asp-action="Logout"> Cerrar Sesión <i class="fa-solid fa-xmark"></i></a></li>
+                                    
+
+                                    
+                                </ul>
+                            }else{
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false"> 
+                                    @User.Identity.Name
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
+                                    <li><a class="dropdown-item" asp-controller="Usuario" asp-action="MiPerfil">Mi Perfil <i class="fa-solid fa-user"></i></a></li>
+                                    <li><a class="dropdown-item" asp-controller="Usuario" asp-action="Logout">Cerrar Sesión <i class="fa-solid fa-xmark"></i></a></li>
+                                </ul>
+                            }
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @if (ViewBag.Mensaje != null)
+			{
+				<div class="alert alert-info alert-dismissible fade show" role="alert">
+					<strong>Información:</strong> @ViewBag.Mensaje
+					
+				</div>
+			}else if (ViewBag.Error != null)
+			{
+				<div class="alert alert-danger" role="alert">
+					<strong>Error:</strong> @ViewBag.Error
+
+				</div>
+			}else if (ViewBag.Informacion != null)
+			{
+                foreach (var item in ViewBag.Informacion)
+                {
+                    <div class="alert alert-primary" role="alert">
+                
+					<strong>Importante:</strong> @item
+
+				</div>
+                }
+				
+			}
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        @if(User.IsInRole("Admin")){
+        <div class="container">
+            &copy; 2022 - MolinaInmobilaria - Admin
+        </div>
+        }else{
+        <div class="container">
+            &copy; 2022 - MolinaInmobilaria - Empleado
+        </div>
+        }
+        
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
