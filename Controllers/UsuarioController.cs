@@ -123,10 +123,23 @@ namespace MolinaInmobilaria.Controllers
         [Authorize]
         public ActionResult Edit(int id)
         {
-            var roles = Usuario.ObtenerRoles();
-            ViewBag.Roles = roles;
-            var aux = repo.ObtenerPorId(id);
-            return View(aux);
+            var usuarioLogeado = repo.ObtenerPorEmail(User.Identity.Name);
+            if(User.IsInRole("Admin")){
+                var roles = Usuario.ObtenerRoles();
+                ViewBag.Roles = roles;
+                var aux = repo.ObtenerPorId(id);
+                return View(aux);
+            }else{
+                if(usuarioLogeado.Id == id){
+                    var roles = Usuario.ObtenerRoles();
+                    ViewBag.Roles = roles;
+                    var aux = repo.ObtenerPorId(id);
+                    return View(aux);
+                }else{
+                    return View("Views/Home/Prohibido.cshtml");
+                }
+            }
+            
         }
         
 
@@ -139,7 +152,9 @@ namespace MolinaInmobilaria.Controllers
             var users = repo.ObtenerTodos();
             try
             {  
-                var todos = repo.ObtenerTodos();
+                var usuarioLogeado = repo.ObtenerPorEmail(User.Identity.Name);
+                if(User.IsInRole("Admin")){
+                    var todos = repo.ObtenerTodos();
                 var aux = repo.ObtenerPorEmail(user.Email);
                 if(aux == null || user.Email == u.Email){
                     if(Regex.IsMatch(user.Nombre, @"^[a-zA-Z]+$") && Regex.IsMatch(user.Apellido, @"^[a-zA-Z]+$")){
@@ -165,7 +180,38 @@ namespace MolinaInmobilaria.Controllers
                     ViewBag.Error = "Ya existe un Usuario con ese Email.";
                     return View("Index", users);   
                 }
-                          
+                }else{
+                     if(usuarioLogeado.Id == id){
+                        var todos = repo.ObtenerTodos();
+                        var aux = repo.ObtenerPorEmail(user.Email);
+                        if(aux == null || user.Email == u.Email){
+                        if(Regex.IsMatch(user.Nombre, @"^[a-zA-Z]+$") && Regex.IsMatch(user.Apellido, @"^[a-zA-Z]+$")){
+
+                                u.Nombre = user.Nombre;
+                                u.Apellido = user.Apellido;
+                                u.Email = user.Email;
+
+                                if(User.IsInRole("Admin")){
+                                    u.Rol = user.Rol;
+                        }
+                                            
+                                ViewBag.Mensaje = "Usuario Modificado";
+                                repo.Modificacion(u);
+                                return View("Details", u); 
+                        }else{
+                                ViewBag.Error = "Los nombres no deben contener un número.";
+                                return View("Index", todos);
+                        }
+
+                            
+                        }else{
+                            ViewBag.Error = "Ya existe un Usuario con ese Email.";
+                            return View("Index", users);   
+                        }
+                     }else{
+                        return View("Views/Home/Prohibido.cshtml");
+                    }
+                }                                     
             }
             catch
             {
