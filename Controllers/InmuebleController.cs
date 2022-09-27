@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using MolinaInmobilaria.Repositorios;
 using MolinaInmobilaria.Models;
 using Microsoft.AspNetCore.Authorization;
+using System.Text.RegularExpressions;
 
 namespace MolinaInmobilaria.Controllers
 {
@@ -51,9 +52,19 @@ namespace MolinaInmobilaria.Controllers
                 return View();
             try
             {
+                
+                if(Regex.IsMatch(i.Ambientes, "[0-9]") && Regex.IsMatch(i.Latitud, "[0-9]") && Regex.IsMatch(i.Longitud, "[0-9]")){
                 int alta = repo.Alta(i);
+                var all = repo.ObtenerTodos();
                 ViewBag.Mensaje = "Inmueble creado perfectamente.";
-                return RedirectToAction(nameof(Index));
+                return View("Index", all);
+                }else{
+                var all = repo.ObtenerTodos();
+                ViewBag.Error = "Valores incorrectos, asegúrese de que Latitud, Longitud y Ambientes este formado únicamente por números.";
+                return View("Index", all);
+                }    
+
+                
             }
             catch(Exception ex)
             {
@@ -82,6 +93,7 @@ namespace MolinaInmobilaria.Controllers
         public ActionResult Edit(int id, IFormCollection collection)
         {
             Inmueble i = null;
+            
             try
             {
                 i = repo.ObtenerPorId(id);
@@ -92,9 +104,17 @@ namespace MolinaInmobilaria.Controllers
                 i.Precio = float.Parse(collection["Precio"]);
                 i.Ambientes = collection["Ambientes"];
                 i.Estado = Int32.Parse(collection["Estado"]);
-                repo.Modificacion(i);
-                ViewBag.Mensaje  = "Datos guardados correctamente";
-                return RedirectToAction(nameof(Index));
+                if(Regex.IsMatch(i.Ambientes, "[0-9]") && Regex.IsMatch(i.Latitud, "[0-9]") && Regex.IsMatch(i.Longitud, "[0-9]")){
+                    repo.Modificacion(i);
+                    var all = repo.ObtenerTodos();
+                    ViewBag.Mensaje  = "Datos guardados correctamente";
+                    return View("Index", all);
+                }else{
+                    var all = repo.ObtenerTodos();
+                    ViewBag.Error = "Valores incorrectos, asegúrese de que Latitud, Longitud y Ambientes este formado únicamente por números.";
+                    return View("Index", all);
+                }
+                
             }
             catch (Exception ex)
             {
@@ -127,9 +147,11 @@ namespace MolinaInmobilaria.Controllers
            try
             {
                 // TODO: Add delete logic here
+                
                 repo.Baja(id);
+                var all = repo.ObtenerTodos();
                 ViewBag.Mensaje  = "Eliminación realizada correctamente";
-                return RedirectToAction(nameof(Index));
+                return View("Index", all);
             }
             catch
             {
@@ -167,8 +189,8 @@ namespace MolinaInmobilaria.Controllers
                     ViewBag.Data = "Estos son los Inmuebles disponibles fuera de ese rango de fechas";
                     return View("Index", inmuebles);
             }else{
-                ViewBag.Data = "No existen Inmuebles disponibles fuera de ese rango de fechas";
-                return View("Index", todos);
+                    ViewBag.Data = "No existen Inmuebles disponibles fuera de ese rango de fechas";
+                    return View("Index", todos);
             }
             
             

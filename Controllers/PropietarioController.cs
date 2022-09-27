@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -43,6 +44,7 @@ namespace MolinaInmobilaria.Controllers
                 return View();
             try
             {
+                
                 var aux = repo.ObtenerTodos();
                 var email = repo.ObtenerPorEmail(i.Email);
                 var telefono = repo.ObtenerPorTelefono(i.Telefono);
@@ -51,15 +53,21 @@ namespace MolinaInmobilaria.Controllers
                 var inquilinoTelefono = repoInquilino.ObtenerPorTelefono(i.Telefono);
                 var inquilinoDni = repoInquilino.ObtenerPorDNI(i.Dni);
                 
-                if(email != null ||telefono != null || dni != null || inquilinoEmail != null ||inquilinoTelefono != null || inquilinoDni != null){
+                if(Regex.IsMatch(i.Nombre, @"^[a-zA-Z]+$") && Regex.IsMatch(i.Apellido, @"^[a-zA-Z]+$") && Regex.IsMatch(i.Dni, "[0-9]") && Regex.IsMatch(i.Telefono, "[0-9]")){
+                    if(email != null ||telefono != null || dni != null || inquilinoEmail != null ||inquilinoTelefono != null || inquilinoDni != null){
                     ViewBag.Error = "Email, Telefono o Dni ya registrados.";
                     return View("Index", aux);
-                }else{
-                int alta = repo.Alta(i);
-                ViewBag.Mensaje = "¡Propietario Creado exitosamente!";
-                var nuevoaux = repo.ObtenerTodos();
-                return View("Index", nuevoaux);
+                    }else{
+                        int alta = repo.Alta(i);
+                        ViewBag.Mensaje = "¡Propietario Creado exitosamente!";
+                        var nuevoaux = repo.ObtenerTodos();
+                        return View("Index", nuevoaux);
                 }
+            }else{
+                ViewBag.Error = "Los nombres no deben contener un número y/o Tanto como el DNI como el teléfono solo puede estar formado por números.";
+                return View("Create");
+            }
+                
                 
             }
             catch
@@ -87,6 +95,7 @@ namespace MolinaInmobilaria.Controllers
         public ActionResult Edit(int id, IFormCollection collection)
         {
            Propietario i = null;
+           var aux = repo.ObtenerTodos();
             try
             {
                 i = repo.ObtenerPorId(id);
@@ -98,7 +107,7 @@ namespace MolinaInmobilaria.Controllers
                 repo.Modificacion(i);
                 
                 ViewBag.Mensaje = "Datos guardados correctamente";
-                return RedirectToAction(nameof(Index));
+                return View("Index", aux);
             }
             catch (Exception ex)
             {
@@ -108,6 +117,7 @@ namespace MolinaInmobilaria.Controllers
         [Authorize(Policy = "Admin")]
         public ActionResult Delete(int id)
         {
+            
 			try
 			{
                 var aux = repo.ObtenerPorId(id);
@@ -126,9 +136,10 @@ namespace MolinaInmobilaria.Controllers
         {
             try
             {
+                var aux = repo.ObtenerTodos();
                 repo.Baja(id);
                 ViewBag.Mensaje ="Propietario eliminado";
-                return RedirectToAction(nameof(Index));
+                return View("Index", aux);
             }
             catch
             {

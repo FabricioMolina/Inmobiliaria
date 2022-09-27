@@ -4,9 +4,9 @@
     <form asp-action="Contraseña">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group">
-            <label name="claveVieja" class="control-label">Contraseña Vieja</label>
-            <input type="password" name="claveVieja" class="form-control" />
-            <span name="claveVieja" class="text-danger"></span>
+            <label name="emailDelUsuario" class="control-label">Email del Usuario</label>
+            <input name="emailDelUsuario" type="email" class="form-control" />
+            <span name="emailDelUsuario" class="text-danger"></span>
         </div>
         <div class="form-group">
             <label name="claveNueva" class="control-label">Nueva contraseña</label>

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -84,8 +85,9 @@ namespace MolinaInmobilaria.Controllers
                             }
                         }
                         if(contratos.Count() == 0){
+
                             DateTime expirar = c.FechaInicio.AddMonths(c.Cantidad_Cuotas);
-                            c.FechaExpiracion = expirar;    
+                            c.FechaExpiracion = expirar;
                             var alta = repo.Alta(c);
                             ViewBag.Mensaje = "Contrato creado perfectamente";
                             return RedirectToAction(nameof(Index));

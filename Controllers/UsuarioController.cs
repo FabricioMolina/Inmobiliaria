@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -65,45 +66,51 @@ namespace MolinaInmobilaria.Controllers
         [Authorize(Policy = "Admin")]
         public ActionResult Create(Usuario user)
         {
-            
+            var users = repo.ObtenerTodos();
             if (!ModelState.IsValid)
                 return View();
             try
             {
                 var aux = repo.ObtenerPorEmail(user.Email);
                 if(aux == null){
-                    string hash = Convert.ToBase64String(KeyDerivation.Pbkdf2(
-                    password: user.Clave,
-                    salt: System.Text.Encoding.ASCII.GetBytes(configuration["Salt"]),
-                    prf: KeyDerivationPrf.HMACSHA1,
-                    iterationCount: 1000,
-                    numBytesRequested: 256 / 8
-                ));
-                user.Clave = hash;
-                user.Rol = User.IsInRole("Admin") ? user.Rol : (int)enRoles.Empleado;
-                var nbreRnd = Guid.NewGuid();
-                int res = repo.Alta(user);
-                if (user.AvatarFile != null && user.Id > 0)
-                {
-                    string wwwPath = environment.WebRootPath;
-                    string path = Path.Combine(wwwPath, "Uploads");
-                    if (!Directory.Exists(path))
-                    {
-                        Directory.CreateDirectory(path);
+                    if(Regex.IsMatch(user.Nombre, @"^[a-zA-Z]+$") && Regex.IsMatch(user.Apellido, @"^[a-zA-Z]+$")){
+                        string hash = Convert.ToBase64String(KeyDerivation.Pbkdf2(
+                        password: user.Clave,
+                        salt: System.Text.Encoding.ASCII.GetBytes(configuration["Salt"]),
+                        prf: KeyDerivationPrf.HMACSHA1,
+                        iterationCount: 1000,
+                        numBytesRequested: 256 / 8
+                        ));
+                        user.Clave = hash;
+                        user.Rol = User.IsInRole("Admin") ? user.Rol : (int)enRoles.Empleado;
+                        var nbreRnd = Guid.NewGuid();
+                        int res = repo.Alta(user);
+                        if (user.AvatarFile != null && user.Id > 0)
+                        {
+                            string wwwPath = environment.WebRootPath;
+                            string path = Path.Combine(wwwPath, "Uploads");
+                        if (!Directory.Exists(path))
+                        {
+                            Directory.CreateDirectory(path);
+                        }
+                        string fileName = "img_" + user.Id + ".jpg";
+                        string pathCompleto = Path.Combine(path, fileName);
+                        user.Avatar = Path.Combine("/Uploads", fileName);
+                        using (FileStream stream = new FileStream(pathCompleto, FileMode.Create))
+                        {
+                            user.AvatarFile.CopyTo(stream);
+                        }
+                        repo.Modificacion(user);                       
                     }
-                    string fileName = "img_" + user.Id + ".jpg";
-                    string pathCompleto = Path.Combine(path, fileName);
-                    user.Avatar = Path.Combine("/Uploads", fileName);
-                    using (FileStream stream = new FileStream(pathCompleto, FileMode.Create))
-                    {
-                        user.AvatarFile.CopyTo(stream);
-                    }
-                    repo.Modificacion(user);
+                    return View("Index", users);  
+                }else{
+                    ViewBag.Error = "Los nombres no deben contener un número.";
+                    return View("Create");
                 }
-                return RedirectToAction(nameof(Index));    
+                
                 }else{
                 ViewBag.Error = "Ya existe un Usuario con ese Email";
-                return RedirectToAction(nameof(Index)); 
+                return View("Create");
                 }
                          
             }
@@ -129,19 +136,36 @@ namespace MolinaInmobilaria.Controllers
         public ActionResult Edit(int id, Usuario user)
         {
             Usuario u = repo.ObtenerPorId(id);
+            var users = repo.ObtenerTodos();
             try
             {  
-                u.Nombre = user.Nombre;
-                u.Apellido = user.Apellido;
-                u.Email = user.Email;
-                if(User.IsInRole("Admin")){
-                    u.Rol = user.Rol;
+                var todos = repo.ObtenerTodos();
+                var aux = repo.ObtenerPorEmail(user.Email);
+                if(aux == null || user.Email == u.Email){
+                    if(Regex.IsMatch(user.Nombre, @"^[a-zA-Z]+$") && Regex.IsMatch(user.Apellido, @"^[a-zA-Z]+$")){
+
+                        u.Nombre = user.Nombre;
+                        u.Apellido = user.Apellido;
+                        u.Email = user.Email;
+
+                        if(User.IsInRole("Admin")){
+                            u.Rol = user.Rol;
+                    }
+                                       
+                        ViewBag.Mensaje = "Usuario Modificado";
+                        repo.Modificacion(u);
+                        return View("Details", u); 
+                    }else{
+                        ViewBag.Error = "Los nombres no deben contener un número.";
+                        return View("Index", todos);
+                    }
+
+                       
+                }else{
+                    ViewBag.Error = "Ya existe un Usuario con ese Email.";
+                    return View("Index", users);   
                 }
-                
-                
-                
-                repo.Modificacion(u);
-                return View("Details", u);             
+                          
             }
             catch
             {
@@ -174,7 +198,8 @@ namespace MolinaInmobilaria.Controllers
                         
                         user.AvatarFile.CopyTo(stream);
                     }
-            repo.Modificacion(u);                                                            
+            repo.Modificacion(u);   
+            ViewBag.Mensaje = "Imagen Modificada";                                                         
             return View("Details", u);  
         }
         [Authorize]
@@ -185,18 +210,13 @@ namespace MolinaInmobilaria.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Contraseña(int id, string claveVieja, string claveNueva, string confirmarClave){
+        public ActionResult Contraseña(int id, string emailDelUsuario, string claveNueva, string confirmarClave){
             if (!ModelState.IsValid)
                 return View();
             try
             {                 
                 var u = repo.ObtenerPorId(id);
-                string hashViejo = Convert.ToBase64String(KeyDerivation.Pbkdf2(
-                    password: claveVieja,
-                    salt: System.Text.Encoding.ASCII.GetBytes(configuration["Salt"]),
-                    prf: KeyDerivationPrf.HMACSHA1,
-                    iterationCount: 1000,
-                    numBytesRequested: 256 / 8));
+                
                 string hashNuevo = Convert.ToBase64String(KeyDerivation.Pbkdf2(
                     password: claveNueva,
                     salt: System.Text.Encoding.ASCII.GetBytes(configuration["Salt"]),
@@ -211,7 +231,7 @@ namespace MolinaInmobilaria.Controllers
                     iterationCount: 1000,
                     numBytesRequested: 256 / 8
                 ));
-                if(u.Clave == hashViejo){
+                if(u.Email == emailDelUsuario){
                     if(hashNuevo == hashConfirmacion){
                         u.Clave = hashNuevo;
                         repo.Modificacion(u);
@@ -222,7 +242,7 @@ namespace MolinaInmobilaria.Controllers
                     return View("Contraseña", u);    
                     }                   
                 }else{
-                    ViewBag.Error = "Las contraseñas no coinciden.";
+                    ViewBag.Error = "El Email no coincide con el usuario que desea modificar.";
                     return View("Contraseña", u);   
                 }                                       
             }
@@ -244,17 +264,19 @@ namespace MolinaInmobilaria.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, Usuario user )
         {
+
             try
             {
+                var u = repo.ObtenerTodos();
                 System.IO.File.Delete(Path.Combine(environment.WebRootPath, "Uploads", "img_" + id + Path.GetExtension(user.Avatar)));
                 repo.Baja(id);
                 ViewBag.Mensaje = "Eliminación realizada correctamente";
-                return RedirectToAction(nameof(Index));
+                return View("Index", u);   
             }
             catch
             {
                 
-                return View();
+                throw;
             }
         }
         
