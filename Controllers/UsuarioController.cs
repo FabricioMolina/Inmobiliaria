@@ -73,7 +73,7 @@ namespace MolinaInmobilaria.Controllers
             {
                 var aux = repo.ObtenerPorEmail(user.Email);
                 if(aux == null){
-                    if(Regex.IsMatch(user.Nombre, @"^[a-zA-Z]+$") && Regex.IsMatch(user.Apellido, @"^[a-zA-Z]+$")){
+                    if((user.Nombre.Any(char.IsLetter)) && (user.Apellido.Any(char.IsLetter))){
                         string hash = Convert.ToBase64String(KeyDerivation.Pbkdf2(
                         password: user.Clave,
                         salt: System.Text.Encoding.ASCII.GetBytes(configuration["Salt"]),
@@ -157,7 +157,7 @@ namespace MolinaInmobilaria.Controllers
                     var todos = repo.ObtenerTodos();
                 var aux = repo.ObtenerPorEmail(user.Email);
                 if(aux == null || user.Email == u.Email){
-                    if(Regex.IsMatch(user.Nombre, @"^[a-zA-Z]+$") && Regex.IsMatch(user.Apellido, @"^[a-zA-Z]+$")){
+                    if((user.Nombre.Any(char.IsLetter)) && (user.Apellido.Any(char.IsLetter))){
 
                         u.Nombre = user.Nombre;
                         u.Apellido = user.Apellido;
@@ -185,7 +185,7 @@ namespace MolinaInmobilaria.Controllers
                         var todos = repo.ObtenerTodos();
                         var aux = repo.ObtenerPorEmail(user.Email);
                         if(aux == null || user.Email == u.Email){
-                        if(Regex.IsMatch(user.Nombre, @"^[a-zA-Z]+$") && Regex.IsMatch(user.Apellido, @"^[a-zA-Z]+$")){
+                        if((user.Nombre.Any(char.IsLetter)) && (user.Apellido.Any(char.IsLetter))){
 
                                 u.Nombre = user.Nombre;
                                 u.Apellido = user.Apellido;
